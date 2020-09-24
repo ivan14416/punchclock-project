@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    $curl = curl_init();
+
+    curl_setopt($curl, CURLOPT_URL, "http://localhost:8081/entries");
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: ' . $_SESSION['jwt']));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    $result = curl_exec($curl);
+    curl_close($curl);
+
+    $entries = json_decode($result);
+
+    foreach($entries as $key => $value) {
+        $entries[$key] = (array) $value;
+    }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +26,13 @@
 <body>
     <h1>Punchclock Index</h1>
 
+    <?php foreach($entries as $key => $value): ?>
+        <div class="row">
+            <div class="col">Entry <?= $value['id'] ?>:</div>
+            <div class="col"><?= $value['checkIn'] ?></div>
+            <div class="col"><?= $value['checkOut'] ?></div>
+        </div>
+    <?php endforeach; ?>
 
 </body>
 </html>

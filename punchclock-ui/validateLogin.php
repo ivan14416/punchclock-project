@@ -1,4 +1,5 @@
 <?php
+session_start();
 $json = json_encode($_POST);
 
 
@@ -17,7 +18,7 @@ $header = get_headers_from_curl_response($result);
 
 if(array_key_exists("Authorization", $header)) {
     $_SESSION['jwt'] = $header['Authorization'];
-    header('Location: index.php')
+    header('Location: index.php');
 } else {
     header('Location: login.php');
 }
