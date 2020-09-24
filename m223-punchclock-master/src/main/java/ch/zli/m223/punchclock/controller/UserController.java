@@ -20,6 +20,7 @@ public class UserController {
         this.bCr = bCr;
     }
 
+    //creates new user in database with decripted password
     @PostMapping("sign-up")
     public void login(@RequestBody ApplicationUser applicationUser) {
         applicationUser.setPassword(bCr.encode(applicationUser.getPassword()));
