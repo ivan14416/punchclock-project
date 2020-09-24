@@ -10,5 +10,5 @@
 	5. einloggen mit username: test, password: test
 
 
-Im Programm kann man sich monentan einloggen, alle Zeiteinträge auslesen lassen und sie auch löschen.
-Das erstellen von Zeiteinträge funktioniert momentan nicht.
+Im Programm kann man sich monentan einloggen, alle Zeiteinträge auslesen lassen, neue erstellen und sie auch löschen.
+Das Format zum Zeiteinträge erstellen ist yyyy-MM-ddThh:mm:ss
